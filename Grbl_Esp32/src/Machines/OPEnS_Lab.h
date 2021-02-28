@@ -27,6 +27,8 @@
 */
 
 #define MACHINE_NAME            "ESP32_V4"
+#define LIMITS_TWO_SWITCHES_ON_AXES
+#define USE_TOOL_CHANGE
 
 #define X_STEP_PIN              GPIO_NUM_12
 #define X_DIRECTION_PIN         GPIO_NUM_27
@@ -35,17 +37,17 @@
 #define Z_STEP_PIN              GPIO_NUM_32
 #define Z_DIRECTION_PIN         GPIO_NUM_14
 
-#define X_LIMIT_PIN             GPIO_NUM_16
-#define Y_LIMIT_PIN             GPIO_NUM_17
-#define Z_LIMIT_PIN             GPIO_NUM_21
+#define X_LIMIT_PIN             GPIO_NUM_26     //A0 on the board
+#define Y_LIMIT_PIN             GPIO_NUM_25     //A1 on the board
+#define Z_LIMIT_PIN             GPIO_NUM_34     //A2 on the board
 
 
 // OK to comment out to use pin for other features
 #define STEPPERS_DISABLE_PIN    GPIO_NUM_13
 
 //#define SPINDLE_TYPE            SpindleType::PWM
-//#define SPINDLE_OUTPUT_PIN      GPIO_NUM_2   // labeled SpinPWM
-//#define SPINDLE_ENABLE_PIN      GPIO_NUM_22  // labeled SpinEnbl
+//#define SPINDLE_OUTPUT_PIN      GPIO_NUM_13   // labeled SpinPWM
+//#define SPINDLE_ENABLE_PIN      GPIO_NUM_21  // labeled SpinEnbl
 
 //#define COOLANT_MIST_PIN        GPIO_NUM_21  // labeled Mist
 //#define COOLANT_FLOOD_PIN       GPIO_NUM_25  // labeled Flood
