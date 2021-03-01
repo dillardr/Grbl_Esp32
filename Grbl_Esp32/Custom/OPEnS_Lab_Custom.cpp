@@ -151,8 +151,6 @@ void user_tool_change(uint8_t new_tool) {
   WebUI::inputBuffer.push(gcode_line);
   protocol_buffer_synchronize();
 
-  //Delay for user input
-
   //Return to previous position
 }
 #endif

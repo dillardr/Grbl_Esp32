@@ -42,22 +42,9 @@
 #define Z_LIMIT_PIN             GPIO_NUM_34     //A2 on the board
 
 
-// OK to comment out to use pin for other features
-#define STEPPERS_DISABLE_PIN    GPIO_NUM_13
+//Servo Control pin
+#define USER_ANALOG_PIN_0      GPIO_NUM_13
+#define USER_ANALOG_PIN_0_FREQ    50    //Hz    
 
-//#define SPINDLE_TYPE            SpindleType::PWM
-//#define SPINDLE_OUTPUT_PIN      GPIO_NUM_13   // labeled SpinPWM
-//#define SPINDLE_ENABLE_PIN      GPIO_NUM_21  // labeled SpinEnbl
-
-//#define COOLANT_MIST_PIN        GPIO_NUM_21  // labeled Mist
-//#define COOLANT_FLOOD_PIN       GPIO_NUM_25  // labeled Flood
-//#define PROBE_PIN               GPIO_NUM_32  // labeled Probe
-
-
-/*
-#define CONTROL_SAFETY_DOOR_PIN GPIO_NUM_35  // labeled Door,  needs external pullup
-#define CONTROL_RESET_PIN       GPIO_NUM_34  // labeled Reset, needs external pullup
-#define CONTROL_FEED_HOLD_PIN   GPIO_NUM_36  // labeled Hold,  needs external pullup
-#define CONTROL_CYCLE_START_PIN GPIO_NUM_39  // labeled Start, needs external pullup
-*/
+#define CUSTOM_CODE_FILENAME "Custom/OPEnS_Lab_Custom.cpp"
 
