@@ -30,7 +30,7 @@
 
 #define MACHINE_NAME            "ESP32_V4"
 
-#define CUSTOM_CODE_FILENAME "Custom/OPEnS_Lab_Custom.cpp"
+#define CUSTOM_CODE_FILENAME "../Custom/OPEnS_Lab_Custom.cpp"
 
 #define LIMITS_TWO_SWITCHES_ON_AXES
 #define USE_TOOL_CHANGE
