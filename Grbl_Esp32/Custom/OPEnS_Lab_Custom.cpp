@@ -144,10 +144,10 @@ void user_tool_change(uint8_t new_tool) {
   WebUI::inputBuffer.push(gcode_line);
 
   protocol_buffer_synchronize();
-  mc_dwell(dwell_time)
+  mc_dwell(dwell_time);
 
   //Close gripper with RC servor
-  sprintf(gcode_line, "M67E0Q5")
+  sprintf(gcode_line, "M67E0Q5");
   WebUI::inputBuffer.push(gcode_line);
   protocol_buffer_synchronize();
 
