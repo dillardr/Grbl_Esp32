@@ -26,7 +26,12 @@
     along with Grbl_ESP32.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+
+
 #define MACHINE_NAME            "ESP32_V4"
+
+#define CUSTOM_CODE_FILENAME "Custom/OPEnS_Lab_Custom.cpp"
+
 #define LIMITS_TWO_SWITCHES_ON_AXES
 #define USE_TOOL_CHANGE
 
@@ -46,5 +51,5 @@
 #define USER_ANALOG_PIN_0      GPIO_NUM_13
 #define USER_ANALOG_PIN_0_FREQ    50    //Hz    
 
-#define CUSTOM_CODE_FILENAME "Custom/OPEnS_Lab_Custom.cpp"
+
 
