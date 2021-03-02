@@ -127,7 +127,7 @@ void forward_kinematics(float* position) {
   to perform appropriate actions for your machine.
 */
 void user_tool_change(uint8_t new_tool) {
-  float dwell_time = 2; //Seconds between gripper open and close
+  uint16_t dwell_time = 5000; //Seconds between gripper open and close
   char   gcode_line[20];
   protocol_buffer_synchronize();
   //Store current position
@@ -136,20 +136,20 @@ void user_tool_change(uint8_t new_tool) {
   sprintf(gcode_line , "G0X0Y0\r");
   WebUI::inputBuffer.push(gcode_line);
 
-  WebUI::inputBuffer.push("?\r");
-  protocol_buffer_synchronize();
+  //protocol_buffer_synchronize();
   
   //Rotates RC servor to open
-  sprintf(gcode_line, "M67E0Q9\r");
+  sprintf(gcode_line, "M67 E0 Q5\r");
   WebUI::inputBuffer.push(gcode_line);
 
+  
+  delay_ms(dwell_time);             //Creates a dwell_time delay for the user to change tools
   protocol_buffer_synchronize();
-  mc_dwell(dwell_time);
 
   //Close gripper with RC servor
-  sprintf(gcode_line, "M67E0Q5\r");
+  sprintf(gcode_line, "M67E0Q20\r");
   WebUI::inputBuffer.push(gcode_line);
-  protocol_buffer_synchronize();
+  //protocol_buffer_synchronize();
 
   //Return to previous position
 }
