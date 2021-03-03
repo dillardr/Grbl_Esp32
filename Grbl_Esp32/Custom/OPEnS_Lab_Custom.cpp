@@ -133,25 +133,21 @@ void user_tool_change(uint8_t new_tool) {
   //Store current position
   
   //Move to defined tool change location
-  sprintf(gcode_line , "G0X0Y0\r");
-  WebUI::inputBuffer.push(gcode_line);
+  WebUI::inputBuffer.push("G0X0Y0\r");
 
   //protocol_buffer_synchronize();
   
   //Rotates RC servor to open
-  sprintf(gcode_line, "M67 E0 Q5\r");
-  WebUI::inputBuffer.push(gcode_line);
-
-  
-  delay_ms(dwell_time);             //Creates a dwell_time delay for the user to change tools
+  WebUI::inputBuffer.push("M67E0Q5\r");
+  grbl_msg_sendf(CLIENT_SERIAL, MsgLevel::Info, "Tool Change");
   protocol_buffer_synchronize();
+  delay_ms(dwell_time);             //Creates a dwell_time delay for the user to change tools
+  
 
-  //Close gripper with RC servor
-  sprintf(gcode_line, "M67E0Q9\r");
-  WebUI::inputBuffer.push(gcode_line);
+  //Close gripper with RC servo
+  WebUI::inputBuffer.push("M67E0Q9\r");
   //protocol_buffer_synchronize();
 
-  //Return to previous position
 }
 #endif
 
