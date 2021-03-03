@@ -144,7 +144,7 @@ void user_tool_change(uint8_t new_tool) {
   WebUI::inputBuffer.push(gcode_line);
 
   //protocol_buffer_synchronize();
-  toolChange.write(120)
+  toolChange.write(120);
 
   delay_ms(wait_time);             //Creates a delay for the user to change tools
   protocol_buffer_synchronize();
