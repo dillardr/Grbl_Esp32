@@ -46,12 +46,19 @@ enabled with USE_ defines in Machines/my_machine.h
 
 */
 
+Servo toolChange;
+
 #ifdef USE_MACHINE_INIT
 /*
 machine_init() is called when Grbl_ESP32 first starts. You can use it to do any
 special things your machine needs at startup.
 */
-void machine_init() {}
+void machine_init() {
+    
+    toolChange.attach(SERVO_SIGNAL_PIN);
+    toolChange.write(30);
+
+}
 #endif
 
 #ifdef USE_CUSTOM_HOMING
@@ -127,30 +134,23 @@ void forward_kinematics(float* position) {
   to perform appropriate actions for your machine.
 */
 void user_tool_change(uint8_t new_tool) {
-  uint16_t dwell_time = 5000; //Seconds between gripper open and close
+  uint16_t wait_time = 5000; //Seconds between gripper open and close
   char   gcode_line[20];
   protocol_buffer_synchronize();
-  //Store current position
+  
   
   //Move to defined tool change location
   sprintf(gcode_line , "G0X0Y0\r");
   WebUI::inputBuffer.push(gcode_line);
 
   //protocol_buffer_synchronize();
-  
-  //Rotates RC servor to open
-  sprintf(gcode_line, "M67 E0 Q5\r");
-  WebUI::inputBuffer.push(gcode_line);
+  toolChange.write(120);
 
-  
-  delay_ms(dwell_time);             //Creates a dwell_time delay for the user to change tools
+  delay_ms(wait_time);             //Creates a delay for the user to change tools
   protocol_buffer_synchronize();
 
-  //Close gripper with RC servor
-  sprintf(gcode_line, "M67E0Q9\r");
-  WebUI::inputBuffer.push(gcode_line);
-  //protocol_buffer_synchronize();
 
+  toolChange.write(30);
   //Return to previous position
 }
 #endif

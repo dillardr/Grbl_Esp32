@@ -26,7 +26,7 @@
     along with Grbl_ESP32.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-
+#include <Servo.h>
 
 #define MACHINE_NAME            "ESP32_V4"
 
@@ -34,6 +34,7 @@
 
 #define LIMITS_TWO_SWITCHES_ON_AXES
 #define USE_TOOL_CHANGE
+#define USE_MACHINE_INIT
 
 #define X_STEP_PIN              GPIO_NUM_12
 #define X_DIRECTION_PIN         GPIO_NUM_27
@@ -48,8 +49,9 @@
 
 
 //Servo Control pin
-#define USER_ANALOG_PIN_0      GPIO_NUM_13
-#define USER_ANALOG_PIN_0_FREQ    50    //Hz    
+#define SERVO_SIGNAL_PIN      GPIO_NUM_13
+    
+
 
 
 
