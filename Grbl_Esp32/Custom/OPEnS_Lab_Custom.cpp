@@ -56,7 +56,7 @@ special things your machine needs at startup.
 void machine_init() {
     
     toolChange.attach(SERVO_SIGNAL_PIN);
-    toolChange.write(30);
+    toolChange.write(10);
 
 }
 #endif
@@ -136,22 +136,15 @@ void forward_kinematics(float* position) {
 void user_tool_change(uint8_t new_tool) {
   uint16_t wait_time = 5000; //Seconds between gripper open and close
   char   gcode_line[20];
-  protocol_buffer_synchronize();
-  
-  
+  protocol_buffer_synchronize(); 
   //Move to defined tool change location
   sprintf(gcode_line , "G0X0Y0\r");
   WebUI::inputBuffer.push(gcode_line);
-
-  //protocol_buffer_synchronize();
-  toolChange.write(120);
-
+  toolChange.write(80);   //Set servo position to 80 degrees.
   delay_ms(wait_time);             //Creates a delay for the user to change tools
   protocol_buffer_synchronize();
-
-
-  toolChange.write(30);
-  //Return to previous position
+  toolChange.write(10);   //Set servo position to ten degrees
+  
 }
 #endif
 
